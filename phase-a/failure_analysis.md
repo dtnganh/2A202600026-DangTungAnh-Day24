@@ -10,7 +10,7 @@
 | 4 | How do the rights of data subjects, particularly the right to delete data, relate to the t | reasoning | 0.00 | 0.00 | 0.00 | 0.25 | 0.06 | C3 |
 | 5 | What does the phrase 'Độc lập - Tự do - Hạnh phúc' signify in the context of data privacy? | simple | 0.00 | 0.00 | 0.33 | 0.33 | 0.17 | C3 |
 | 6 | What are the responsibilities of the government in data protection according to the regula | simple | 0.00 | 0.00 | 1.00 | 0.00 | 0.25 | C3 |
-| 7 | Chủ thể dữ liệu là ai trong quy định về bảo vệ dữ liệu cá nhân? | simple | 0.50 | 0.82 | 0.00 | 0.00 | 0.33 | C2 |
+| 7 | Chủ thể dữ liệu là ai trong quy định về bảo vệ dữ liệu cá nhân? | simple | 0.50 | 0.82 | 0.00 | 0.00 | 0.33 | C3 |
 | 8 | What is the significance of the mã số thuế in relation to the quyền riêng tư as outlined i | reasoning | 0.00 | 0.00 | 1.00 | 0.33 | 0.33 | C3 |
 | 9 | What is the significance of the consent of the data subject in relation to the value-added | reasoning | 0.00 | 0.00 | 1.00 | 0.33 | 0.33 | C3 |
 | 10 | What is the significance of the organization CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM in the con | simple | 0.00 | 0.00 | 1.00 | 0.50 | 0.37 | C3 |
@@ -28,15 +28,6 @@
 
 **Proposed fix:** Increase top_k, add hybrid retrieval or reranking, and inspect cross-document chunk coverage.
 
-### Cluster C2: Noisy/off-topic retrieved contexts
-
-**Pattern:** Noisy/off-topic retrieved contexts
-
-**Examples:**
-- Chủ thể dữ liệu là ai trong quy định về bảo vệ dữ liệu cá nhân?
-
-**Proposed fix:** Tune retrieval filters, add metadata constraints, and rerank before generation.
-
 ### Cluster C3: Answer not fully grounded in context
 
 **Pattern:** Answer not fully grounded in context
@@ -45,5 +36,6 @@
 - How do the rights of data subjects, particularly the right to delete data, relate to the tax deduction process outlined in the context of value-added tax?
 - What does the phrase 'Độc lập - Tự do - Hạnh phúc' signify in the context of data privacy?
 - What are the responsibilities of the government in data protection according to the regulations?
+- Chủ thể dữ liệu là ai trong quy định về bảo vệ dữ liệu cá nhân?
 
-**Proposed fix:** Tighten grounded-generation prompt and cite only retrieved context spans.
+**Proposed fix:** Tighten grounded-generation prompt, cite only retrieved context spans, and add a validation step that refuses to answer when the retrieved context does not contain the exact definition or evidence needed.
