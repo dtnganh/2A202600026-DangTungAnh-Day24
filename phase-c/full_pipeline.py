@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
+import json
 import statistics
 import sys
 import time
@@ -18,6 +20,7 @@ from lab24_core.rag_adapter import build_rag
 
 
 REFUSAL = "Xin loi, toi khong the ho tro yeu cau nay trong pham vi he thong."
+AUDIT_LOG = PHASE_C / "audit_log.jsonl"
 
 
 class GuardedPipeline:
@@ -40,8 +43,10 @@ class GuardedPipeline:
         injection = await injection_task
         timings["L1"] = (time.perf_counter() - t0) * 1000
         if not injection.ok:
+            await audit_log(user_input, REFUSAL, timings, injection.reason)
             return REFUSAL, timings, injection.reason
         if not topic_ok:
+            await audit_log(user_input, topic_reason, timings, "topic_refusal")
             return topic_reason, timings, "topic_refusal"
 
         t0 = time.perf_counter()
@@ -52,9 +57,28 @@ class GuardedPipeline:
         safe, raw, _ = await asyncio.to_thread(self.output_guard.check, sanitized, answer)
         timings["L3"] = (time.perf_counter() - t0) * 1000
         if not safe:
+            await audit_log(user_input, REFUSAL, timings, "output_guard_refusal")
             return REFUSAL, timings, f"output_guard:{raw}"
 
+        await audit_log(user_input, answer, timings, "ok")
         return answer, timings, "ok"
+
+
+async def audit_log(user_input: str, answer: str, timings: dict[str, float], status: str) -> None:
+    record = {
+        "query_sha256": hashlib.sha256(user_input.encode("utf-8")).hexdigest(),
+        "answer_chars": len(answer),
+        "status": status,
+        "timings": {key: round(value, 3) for key, value in timings.items()},
+    }
+    line = json.dumps(record, ensure_ascii=False)
+    await asyncio.to_thread(_append_audit_line, line)
+
+
+def _append_audit_line(line: str) -> None:
+    AUDIT_LOG.parent.mkdir(parents=True, exist_ok=True)
+    with AUDIT_LOG.open("a", encoding="utf-8") as f:
+        f.write(line + "\n")
 
 
 def percentile(values: list[float], pct: float) -> float:
@@ -116,4 +140,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

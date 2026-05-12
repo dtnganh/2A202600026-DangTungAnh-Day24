@@ -40,32 +40,49 @@ class HeuristicOutputGuard:
 
 
 class GroqLlamaGuard:
-    mode = "llama-guard-3-8b-groq"
+    mode = "openai/gpt-oss-safeguard-20b-groq"
 
     def __init__(self):
         load_env()
         self.api_key = require_env("GROQ_API_KEY")
         self.url = "https://api.groq.com/openai/v1/chat/completions"
+        self._cache: dict[tuple[str, str], tuple[bool, str, float]] = {}
 
     def check(self, user_input: str, agent_response: str) -> tuple[bool, str, float]:
         import requests
 
+        cache_key = (user_input, agent_response)
+        if cache_key in self._cache:
+            safe, raw, _ = self._cache[cache_key]
+            return safe, raw, 0.0
+
         payload = {
-            "model": os.getenv("LLAMA_GUARD_MODEL", "llama-guard-3-8b"),
+            "model": os.getenv("LLAMA_GUARD_MODEL", "openai/gpt-oss-safeguard-20b"),
             "messages": [
-                {"role": "user", "content": user_input},
-                {"role": "assistant", "content": agent_response},
+                {
+                    "role": "user",
+                    "content": (
+                        "Classify this assistant response as safe or unsafe. "
+                        "Reply with safe or unsafe first.\n\n"
+                        f"User: {user_input}\nAssistant: {agent_response}"
+                    ),
+                },
             ],
             "temperature": 0,
         }
         headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
         start = time.perf_counter()
         response = requests.post(self.url, json=payload, headers=headers, timeout=60)
+        if response.status_code == 429:
+            retry_after = int(response.headers.get("retry-after", "2"))
+            time.sleep(min(retry_after, 10))
+            response = requests.post(self.url, json=payload, headers=headers, timeout=60)
         latency_ms = (time.perf_counter() - start) * 1000
         response.raise_for_status()
         result = response.json()["choices"][0]["message"]["content"]
-        lowered = result.lower()
-        is_safe = "safe" in lowered and "unsafe" not in lowered
+        first_token = result.strip().lower().split(maxsplit=1)[0].strip("`:,.;")
+        is_safe = first_token == "safe"
+        self._cache[cache_key] = (is_safe, result, latency_ms)
         return is_safe, result, latency_ms
 
 
@@ -141,4 +158,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

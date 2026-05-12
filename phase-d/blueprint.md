@@ -30,7 +30,7 @@ graph TD
     D --> E[Retriever + Reranker]
     E --> F[OpenAI gpt-4o-mini Generation]
     F --> G[L3 Output Guards]
-    G --> G1[Llama Guard 3 via Groq or configured provider]
+    G --> G1[Groq safety model fallback: openai/gpt-oss-safeguard-20b]
     G --> H{Output safe?}
     H -->|No| Z
     H -->|Yes| I[Response to User]
@@ -43,8 +43,10 @@ Latency budget:
 |---|---:|---|
 | L1 Input Guards | < 50ms | Regex and topic checks should be local/fast. |
 | L2 RAG | Project-dependent | Dominated by retrieval, rerank, and OpenAI generation. |
-| L3 Output Guard | < 100ms target | API-based Llama Guard can be slower; document measured P95. |
+| L3 Output Guard | < 100ms target | Current Groq safety fallback measured ~683.851ms P95, so this is the main bottleneck. |
 | L4 Audit Log | Async | Not counted in user-facing latency budget. |
+
+Measured baseline: local heuristic output guard total P95 was ~12.8ms, while Groq safety fallback total P95 was ~693.010ms. The external safety API therefore adds roughly +680ms P95 overhead in this lab run.
 
 ## 3. Alert Playbook
 
@@ -125,7 +127,7 @@ Assumption: 100k production queries/month, 1% continuous eval sample, and 10% ju
 | LLM judge with OpenAI gpt-4o-mini | To update from actual token logs | 10k judgments | TBD |
 | Presidio + regex PII guard | Self-hosted CPU | 100k queries | $0 incremental |
 | Topic/injection guard | Local rules in current implementation | 100k queries | $0 incremental |
-| Llama Guard 3 output guard | Provider/GPU dependent | 100k queries | TBD |
+| Groq output safety fallback | Provider/API dependent | 100k queries | TBD |
 | Logging and storage | Depends on retention | 100k events | TBD |
 
 Cost optimization opportunities:
@@ -133,6 +135,5 @@ Cost optimization opportunities:
 - Sample continuous eval instead of judging every query.
 - Use `gpt-4o-mini` for judge runs unless a harder rubric needs a stronger model.
 - Use local regex/rule checks for cheap L1 guardrails.
-- Compare Groq/API Llama Guard cost with self-hosting only after measured traffic is known.
+- Compare Groq/API safety cost with self-hosting only after measured traffic is known.
 - Log token usage per run so README numbers are based on actual usage, not guesses.
-

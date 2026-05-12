@@ -1,0 +1,11 @@
+question
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?
+Du lieu ca nhan nhay cam gom nhung thong tin nao?
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?
+Bao cao tai chinh co nhung chi tieu nao?
+RAG evaluation can do nhung metric nao?
+Guardrails can chan PII ra sao?
+Context precision la gi trong RAG evaluation?
+Cohen kappa dung de lam gi trong LLM judge?
+Audit log trong he thong guardrails nen luu thong tin gi?
+Latency P95 trong full pipeline co y nghia gi?

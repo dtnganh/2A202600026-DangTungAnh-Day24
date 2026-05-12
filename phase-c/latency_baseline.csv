@@ -1,0 +1,101 @@
+query,status,L1,L2,L3,total
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,1.874,9.373,0.205,12.334
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.703,9.609,0.19,11.379
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.466,10.841,0.219,12.305
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.382,9.102,0.244,10.548
+RAG evaluation can do nhung metric nao?,ok,0.519,7.97,0.178,9.396
+Guardrails can chan PII ra sao?,ok,0.356,7.83,0.143,8.954
+Context precision la gi trong RAG evaluation?,ok,0.371,8.374,0.189,9.609
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.489,8.529,0.186,9.908
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.417,9.37,0.219,10.752
+Latency P95 trong full pipeline co y nghia gi?,ok,0.395,9.176,0.215,10.464
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.404,9.232,0.194,10.557
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.41,9.818,0.166,11.035
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.576,10.64,0.247,12.179
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.356,8.991,0.2,10.188
+RAG evaluation can do nhung metric nao?,ok,0.341,7.911,0.157,9.003
+Guardrails can chan PII ra sao?,ok,0.528,7.537,0.176,8.846
+Context precision la gi trong RAG evaluation?,ok,0.55,8.068,0.186,9.519
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.37,8.582,0.195,9.805
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.389,8.964,0.186,10.178
+Latency P95 trong full pipeline co y nghia gi?,ok,0.367,8.511,0.196,9.755
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.366,8.793,0.183,9.953
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.355,9.365,0.166,10.509
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.439,11.407,0.186,12.759
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.497,8.692,0.188,10.07
+RAG evaluation can do nhung metric nao?,ok,0.716,8.12,0.167,9.638
+Guardrails can chan PII ra sao?,ok,0.616,7.97,0.244,9.475
+Context precision la gi trong RAG evaluation?,ok,0.427,7.962,0.177,9.266
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.368,8.308,0.203,9.474
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.591,8.943,0.193,10.46
+Latency P95 trong full pipeline co y nghia gi?,ok,0.475,8.814,0.197,10.358
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.506,9.447,0.248,10.902
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.357,9.156,0.143,10.322
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.673,11.339,0.17,12.886
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.573,8.362,0.188,9.728
+RAG evaluation can do nhung metric nao?,ok,0.56,7.951,0.167,9.299
+Guardrails can chan PII ra sao?,ok,0.322,7.736,0.167,8.838
+Context precision la gi trong RAG evaluation?,ok,0.37,8.184,0.175,9.352
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.358,8.556,0.152,9.657
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.649,9.031,0.219,10.529
+Latency P95 trong full pipeline co y nghia gi?,ok,0.383,8.616,0.181,9.752
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.534,8.643,0.267,10.199
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.462,9.395,0.186,10.728
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.5,11.412,0.233,12.909
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.549,8.783,0.219,10.288
+RAG evaluation can do nhung metric nao?,ok,0.438,8.807,0.173,10.164
+Guardrails can chan PII ra sao?,ok,0.457,7.696,0.179,9.054
+Context precision la gi trong RAG evaluation?,ok,0.363,7.608,0.172,8.785
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.671,8.606,0.184,10.108
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.47,9.092,0.211,10.414
+Latency P95 trong full pipeline co y nghia gi?,ok,0.583,9.746,0.27,11.258
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.545,10.071,0.244,11.675
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.437,11.016,0.218,12.383
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.451,12.825,0.262,14.265
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.38,9.358,0.285,10.816
+RAG evaluation can do nhung metric nao?,ok,0.574,8.617,0.22,10.167
+Guardrails can chan PII ra sao?,ok,0.409,8.285,0.227,9.702
+Context precision la gi trong RAG evaluation?,ok,0.552,10.726,0.226,12.364
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.465,10.703,0.225,12.311
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.566,10.49,0.248,12.073
+Latency P95 trong full pipeline co y nghia gi?,ok,0.476,9.346,0.194,10.805
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.448,10.126,0.207,11.546
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.39,10.534,0.198,11.993
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.632,11.438,0.213,13.07
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.394,9.281,0.224,10.685
+RAG evaluation can do nhung metric nao?,ok,0.437,8.475,0.181,10.066
+Guardrails can chan PII ra sao?,ok,0.517,8.183,0.19,9.825
+Context precision la gi trong RAG evaluation?,ok,0.463,8.517,0.191,9.971
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.386,9.72,0.256,11.276
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.57,10.332,0.283,12.126
+Latency P95 trong full pipeline co y nghia gi?,ok,0.448,9.894,0.22,11.423
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.439,10.192,0.208,11.643
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.456,10.088,0.152,11.38
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.381,10.813,0.209,12.061
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.386,8.229,0.212,9.534
+RAG evaluation can do nhung metric nao?,ok,0.359,7.948,0.17,9.153
+Guardrails can chan PII ra sao?,ok,0.357,7.761,0.181,8.991
+Context precision la gi trong RAG evaluation?,ok,0.387,8.203,0.182,9.404
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.387,9.295,0.213,10.651
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.373,9.201,0.206,10.425
+Latency P95 trong full pipeline co y nghia gi?,ok,0.399,8.96,0.279,10.414
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.424,10.27,0.214,11.714
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.399,10.167,0.184,11.501
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.486,10.851,0.187,12.141
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.399,8.666,0.204,9.937
+RAG evaluation can do nhung metric nao?,ok,0.353,7.788,0.169,8.93
+Guardrails can chan PII ra sao?,ok,0.358,7.742,0.164,9.017
+Context precision la gi trong RAG evaluation?,ok,0.364,8.372,0.238,9.65
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.389,8.287,0.173,9.581
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.464,9.407,0.207,10.797
+Latency P95 trong full pipeline co y nghia gi?,ok,0.36,9.42,0.216,10.678
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,ok,0.408,9.92,0.215,11.296
+Du lieu ca nhan nhay cam gom nhung thong tin nao?,ok,0.488,11.459,0.205,12.91
+Chu the du lieu co quyen gi theo quy dinh ve bao ve du lieu ca nhan?,ok,0.352,10.759,0.21,12.0
+Bao cao tai chinh co nhung chi tieu nao?,ok,0.418,8.816,0.234,10.195
+RAG evaluation can do nhung metric nao?,ok,0.38,8.988,0.173,10.353
+Guardrails can chan PII ra sao?,ok,0.475,8.94,0.219,10.498
+Context precision la gi trong RAG evaluation?,ok,0.469,9.262,0.231,10.759
+Cohen kappa dung de lam gi trong LLM judge?,ok,0.517,10.184,0.234,11.759
+Audit log trong he thong guardrails nen luu thong tin gi?,ok,0.401,10.126,0.19,11.326
+Latency P95 trong full pipeline co y nghia gi?,ok,0.377,8.461,0.194,9.746

@@ -138,7 +138,20 @@ class InjectionDetector:
 class TopicGuard:
     def __init__(self, allowed_topics: list[str] | None = None):
         self.allowed_topics = allowed_topics or [
-            "bao cao tai chinh", "bao ve du lieu ca nhan", "nghi dinh 13", "du lieu ca nhan", "rag evaluation", "guardrails", "what", "is", "the", "công", "ty", "dữ", "liệu", "cá", "nhân", "thuế",
+            "bao cao tai chinh",
+            "bao ve du lieu ca nhan",
+            "nghi dinh 13",
+            "du lieu ca nhan",
+            "rag evaluation",
+            "guardrails",
+            "context precision",
+            "context recall",
+            "cohen kappa",
+            "llm judge",
+            "audit log",
+            "latency p95",
+            "công ty",
+            "thuế",
         ]
         self.allowed_terms = {term for topic in self.allowed_topics for term in _terms(topic)}
 

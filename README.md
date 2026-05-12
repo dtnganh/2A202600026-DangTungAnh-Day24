@@ -7,7 +7,7 @@ Hệ thống Evaluation và Guardrails hoàn chỉnh cho pipeline RAG, tích h�
 ```bash
 E:\Vinuni\lab24\venv\Scripts\python.exe -m pip install -r requirements.txt
 copy .env.example .env
-# edit .env and set OPENAI_API_KEY
+# edit .env and set OPENAI_API_KEY + GROQ_API_KEY
 ```
 
 Default OpenAI model for generation, RAGAS, and LLM-as-Judge scripts: `gpt-4o-mini`.
@@ -28,8 +28,8 @@ E:\Vinuni\lab24\venv\Scripts\python.exe phase-b/bias_report.py
 
 # Phase C
 E:\Vinuni\lab24\venv\Scripts\python.exe phase-c/run_guardrail_tests.py
-E:\Vinuni\lab24\venv\Scripts\python.exe phase-c/output_guard.py --mode auto
-E:\Vinuni\lab24\venv\Scripts\python.exe phase-c/full_pipeline.py --n 100
+E:\Vinuni\lab24\venv\Scripts\python.exe phase-c/output_guard.py --mode groq
+E:\Vinuni\lab24\venv\Scripts\python.exe phase-c/full_pipeline.py --n 100 --output-mode groq --testset phase-c/benchmark_queries.csv
 
 # Static check
 E:\Vinuni\lab24\venv\Scripts\python.exe check_lab.py
@@ -53,9 +53,11 @@ E:\Vinuni\lab24\venv\Scripts\python.exe check_lab.py
 ### Phase C (Guardrails)
 - PII detection rate: 85.7%, P95 latency ~0.164ms
 - Topic validator: 80.0% accuracy, 70.0% refuse rate
-- Adversarial defense: 100.0% detection on 20 crafted attacks
-- Output guard smoke test: heuristic mode only, unsafe detection 70.0%, safe false positive 0.0%, P95 latency ~0.015ms
-- Full pipeline benchmark: 100 requests, current run exits at L1 for many queries; L1 P95 ~0.713ms and total P95 ~0.718ms. Need rerun with on-topic query set to measure L2/L3.
+- Adversarial defense: 100.0% detection on 20 crafted attacks, 0.0% false positive on 10 legitimate queries
+- Output guard via Groq safety fallback (`openai/gpt-oss-safeguard-20b`): unsafe detection 100.0%, safe false positive 0.0%, standalone P95 latency ~1870.879ms
+- Full pipeline benchmark: 100 requests over `phase-c/benchmark_queries.csv`; L1 P95 ~0.644ms, L2 P95 ~10.307ms, L3 P95 ~683.851ms, total P95 ~693.010ms.
+- Baseline with local heuristic output guard: total P95 ~12.8ms in `phase-c/latency_baseline.csv`; Groq safety fallback adds roughly +680ms P95 overhead.
+- L3 target <100ms is not met because the currently available Groq safety model is an external API call; this is documented as the main latency bottleneck.
 
 ### Phase D (Blueprint)
 [Link to blueprint.md](phase-d/blueprint.md)
@@ -63,8 +65,8 @@ E:\Vinuni\lab24\venv\Scripts\python.exe check_lab.py
 ## Lessons Learned
 - RAGAS exposes weaknesses that a normal demo can hide: retrieval precision can look strong while faithfulness and answer relevancy remain weak.
 - Pairwise LLM judging needs bias checks. In this run, position and length bias are visible even with swap-and-average, so the judge result should be interpreted alongside the bias report.
-- Guardrails should be benchmarked layer by layer. The local input layer is fast enough, but the output guard still needs a real Llama Guard 3/Groq run before final submission.
+- Guardrails should be benchmarked layer by layer. The local input layer is fast enough, while API-based output safety is the main latency bottleneck.
 
 ## Notes
 
-OpenAI-backed Phase A/B artifacts have been generated with `gpt-4o-mini`. Phase C output guard currently includes a local heuristic smoke test; final Llama Guard 3 results still need Groq or a self-hosted model.
+OpenAI-backed Phase A/B artifacts have been generated with `gpt-4o-mini`. Groq returned `model_decommissioned` for `llama-guard-3-8b` and `meta-llama/llama-guard-4-12b`, so Phase C uses the currently available Groq safety model `openai/gpt-oss-safeguard-20b` and documents that deviation.
