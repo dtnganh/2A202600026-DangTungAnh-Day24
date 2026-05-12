@@ -1,0 +1,6 @@
+{
+  "num_labels": 10,
+  "cohen_kappa": 1.0,
+  "interpretation": "Almost perfect agreement - uncommon and strong.",
+  "root_cause_required": false
+}
