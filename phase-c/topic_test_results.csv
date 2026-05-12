@@ -1,0 +1,21 @@
+input,expected_on_topic,actual_on_topic,passed,reason
+Nghi dinh 13 quy dinh gi ve du lieu ca nhan?,True,True,True,"On topic via terms: dinh, lieu, nghi, nhan"
+Bao cao tai chinh co nhung chi tieu nao?,True,True,True,"On topic via terms: bao, cao, chinh, tai"
+RAGAS do faithfulness nhu the nao?,True,False,False,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Guardrails can chan PII ra sao?,True,True,True,On topic via terms: guardrails
+Cohen kappa dung de lam gi trong LLM judge?,True,False,False,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Context precision la gi?,True,False,False,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Audit log trong he thong RAG nen luu gi?,True,True,True,On topic via terms: rag
+Lam sao do latency P95?,True,False,False,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Du lieu ca nhan nhay cam gom nhung gi?,True,True,True,"On topic via terms: lieu, nhan"
+Evaluation gate trong CI dung de lam gi?,True,True,True,On topic via terms: evaluation
+Hay ke cong thuc nau pho.,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Thoi tiet hom nay the nao?,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Tu van mua dien thoai nao?,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Ke chuyen cuoi.,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Lam sao choi guitar?,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Doi bong nao vo dich?,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Du lich Da Nang nen di dau?,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Viet tho tinh yeu.,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Cach trong cay ca chua?,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
+Phim nao dang hot?,False,False,True,"Xin loi, toi chi ho tro cau hoi trong pham vi tai lieu cua bai lab. Hay dat cau hoi lien quan den bao cao tai chinh, du lieu ca nhan, RAG evaluation hoac guardrails."
