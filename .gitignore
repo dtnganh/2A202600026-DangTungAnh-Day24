@@ -1,0 +1,17 @@
+# Local working checklist
+todo.md
+
+# Secrets and local environments
+.env
+venv/
+.venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Generated runtime caches
+.openai_cache/
+.ragas_cache/
